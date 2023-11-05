@@ -20,7 +20,7 @@ const Navbar = () => {
               textDecoration: isActive ? 'underline' : 'none',
               fontWeight : isActive ? 'bold' : 'normal',
               background: isActive ? 'transparent' : 'transparent'
-              })} to='/addProduct'>Add Job</NavLink></li>
+              })} to='/addJob'>Add Job</NavLink></li>
       <li><NavLink style={({ isActive }) => ({
               color: isActive ? "#4F4A45" : 'black',
               textDecoration: isActive ? 'underline' : 'none',
