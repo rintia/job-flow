@@ -130,7 +130,11 @@ const AddJob = () => {
                         </label>
                     </div>
                 </div>
-                <input type="submit" value="Add Product" className="btn btn-block bg-dark hover:bg-pink" />
+               
+              
+              <input type="submit" value="Add Product" className=" btn btn-block bg-dark text-light hover:bg-brown" />
+              
+               
 
             </form>
         </div>

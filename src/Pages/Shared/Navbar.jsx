@@ -26,7 +26,7 @@ const Navbar = () => {
               textDecoration: isActive ? 'underline' : 'none',
               fontWeight : isActive ? 'bold' : 'normal',
               background: isActive ? 'transparent' : 'transparent'
-              })} to='/myCart'>My Posted Jobs</NavLink></li>
+              })} to='/postedJobs'>My Posted Jobs</NavLink></li>
       <li><NavLink style={({ isActive }) => ({
               color: isActive ? "#4F4A45" : 'black',
               textDecoration: isActive ? 'underline' : 'none',
@@ -46,7 +46,7 @@ const Navbar = () => {
         .catch(error => console.log(error))
      }
       return (
-          <div className="navbar sticky top-0 z-50 bg-white">
+          <div className="navbar sticky top-0 z-50 bg-light">
     <div className="navbar-start">
       <div className="dropdown">
         <label tabIndex={0} className="btn btn-ghost lg:hidden">
