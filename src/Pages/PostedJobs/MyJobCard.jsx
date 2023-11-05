@@ -2,6 +2,7 @@ import React from 'react';
 import { VscSymbolColor } from 'react-icons/vsc';
 import { SiWebpack } from 'react-icons/si';
 import { BsGlobe } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 
 const MyJobCard = ({job, handleDelete}) => {
@@ -21,7 +22,7 @@ const MyJobCard = ({job, handleDelete}) => {
           <p>Deadline: {deadline}</p>
           <p>Price Range: ${minPrice}- ${maxPrice}</p>
           <div className="card-actions justify-between">
-          <button className="btn btn-outline ">Update</button>
+          <Link to={`/updateJob/${_id}`}><button className="btn btn-outline ">Update</button></Link>
           <button onClick={() => handleDelete(_id)} className='btn btn-outline'>Delete</button>
            
            
