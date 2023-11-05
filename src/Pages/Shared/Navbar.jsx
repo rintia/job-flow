@@ -1,12 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
-
 import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 
 
 const Navbar = () => {
-    // const { user, logOut } = useContext(AuthContext)
-    // console.log(user);
+    const { user, logOut } = useContext(AuthContext)
+    console.log(user);
       const navLinks = <>
        <li > <NavLink style={({ isActive }) => ({
               color: isActive ? "#4F4A45" : 'black',
@@ -66,7 +66,7 @@ const Navbar = () => {
         {navLinks}
       </ul>
     </div>
-    {/* <div className="navbar-end flex gap-0 md:gap-4">
+    <div className="navbar-end flex gap-0 md:gap-4">
   
        
       { user?.email ? <div className="dropdown dropdown-end">
@@ -93,13 +93,13 @@ const Navbar = () => {
        <div className="md:flex ">
         <NavLink style={({ isActive }) => ({
               textDecoration : isActive ? 'underline' : 'none'
-              })} to='/login'><h1 className="text-[#B0578D] font-semibold mr-4" href="">Login/Register</h1></NavLink>
+              })} to='/login'><h1 className="text-[#ED7D31] font-semibold mr-4" href="">Login/Register</h1></NavLink>
         
        </div>
       }
      
       
-    </div> */}
+    </div>
   </div>
       );
   };

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../Providers/AuthProvider";
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
     const {signInUser, signInWithGoogle} = useContext(AuthContext);
@@ -40,13 +41,14 @@ const Login = () => {
 
       }
     return (
-        <div style={{backgroundImage: 'url(https://i.ibb.co/pn2yhk5/bg.jpg)'}} className="hero min-h-screen ">
-          <div className="hero-overlay"></div>
-  <div className="hero-content flex-col ">
-    <div className="text-center lg:text-left">
-      <h1 className="text-5xl text-white font-bold text-dark">Login now!</h1>
+        <div>
+    <div className="flex flex-col-reverse md:flex-row">
+    <div className="h-cover w-full md:w-1/2">
+        <img className="h-full w-full"  src="https://i.ibb.co/QKcwRxP/login3.jpg" alt="" />
+        
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl glass ">
+    <div className="card w-full md:w-1/2">
+    <h1 className="text-5xl font-bold text-center pt-8 text-[#4F4A45]">Login now!</h1>
       <form onSubmit={handleLogin} className="card-body">
         <div className="form-control">
           <label className="label">
@@ -62,11 +64,19 @@ const Login = () => {
          
         </div>
         <div className="form-control mt-6">
-          <button className="btn border-none bg-dark  hover:bg-[#D988B9] btn-primary">Login</button>
+          <button className="btn border-none bg-[#ED7D31] hover:bg-[#6C5F5B] btn-primary">Login</button>
+          
           <p className="text-center mt-4">Or</p>
-          <p className="text-center">Sign in with <button onClick={handleGoogleSignIn} className="btn text-dark btn-link">Google</button></p>
+          <div className="flex justify-center">
+          <button onClick={handleGoogleSignIn} className="btn w-full lg::w-1/2 text-dark btn-outline">
+          <FcGoogle className="text-3xl"></FcGoogle>
+            Login with Google</button>
+          </div>
         </div>
-        <p>New here? Please <Link to='/register'><button className="btn btn-link text-dark">Register</button></Link></p>
+        <p className="text-center">New here? Please <Link to='/register'>
+            <button className="btn btn-link text-dark">
+                
+                Register</button></Link></p>
       </form>
     </div>
   

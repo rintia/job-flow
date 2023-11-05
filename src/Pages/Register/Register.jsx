@@ -3,6 +3,7 @@ import { useContext } from "react";
 import {  toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../Providers/AuthProvider";
+import { FcGoogle } from 'react-icons/fc';
 
 
 
@@ -60,13 +61,15 @@ const Register = () => {
 
     }
     return (
-        <div style={{backgroundImage: 'url(https://i.ibb.co/pn2yhk5/bg.jpg)'}} className="hero min-h-screen ">
-          <div className="hero-overlay"></div>
-  <div className="hero-content flex-col ">
-    <div className="text-center lg:text-left">
-      <h1 className="text-5xl text-dark font-bold">Register now!</h1>
+        <div >
+         
+  <div className="flex flex-col-reverse md:flex-row">
+  <div className="h-cover md:w-1/2">
+        <img className="h-full w-full"  src="https://i.ibb.co/QKcwRxP/login3.jpg" alt="" />
+        
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl glass">
+    <div className="card md:w-1/2">
+    <h1 className="text-5xl text-[#4F4A45] text-center font-bold">Register now!</h1>
       <form onSubmit={handleRegister} className="card-body">
       <div className="form-control">
           <label className="label">
@@ -93,13 +96,16 @@ const Register = () => {
           <input type="password" name="password" placeholder="password" className="input input-bordered" required />
         </div>
         <div className="form-control mt-6">
-          <button className="btn border-none bg-dark text-while (condition) {
-            
-          } hover:bg-[#D988B9] btn-primary">Register</button>
+          <button className="btn border-none bg-dark text-while  bg-[#ED7D31] hover:bg-[#6C5F5B] btn-primary">Register</button>
           <p className="text-center mt-4">Or</p>
-          <p className="text-center">Sign in with <button onClick={handleGoogleSignIn} className="btn text-dark btn-link">Google</button></p>
+         <div className="flex justify-center">
+         <button
+           onClick={handleGoogleSignIn} className="btn btn-outline">
+            <FcGoogle className="text-3xl"></FcGoogle>
+            Login with Google</button>
+         </div>
         </div>
-        <p>Already have an account? Please <Link to='/login'><button className="btn text-dark btn-link">Login</button></Link></p>
+        <p className="text-center">Already have an account? Please <Link to='/login'><button className="btn text-dark btn-link">Login</button></Link></p>
        
       </form>
     </div>
