@@ -2,9 +2,9 @@ import React from 'react';
 import { VscSymbolColor } from 'react-icons/vsc';
 import { SiWebpack } from 'react-icons/si';
 import { BsGlobe } from 'react-icons/bs';
-import { AiTwotoneDelete } from 'react-icons/ai';
 
-const MyJobCard = ({job}) => {
+
+const MyJobCard = ({job, handleDelete}) => {
     const{_id, title, category, deadline, maxPrice, minPrice, descrpition} =job
     return (
         <div className="card text-light bg-gradient-to-r from-orange to-brown shadow-xl">
@@ -22,7 +22,7 @@ const MyJobCard = ({job}) => {
           <p>Price Range: ${minPrice}- ${maxPrice}</p>
           <div className="card-actions justify-between">
           <button className="btn btn-outline ">Update</button>
-          <button className='btn btn-outline'>Delete</button>
+          <button onClick={() => handleDelete(_id)} className='btn btn-outline'>Delete</button>
            
            
           </div>

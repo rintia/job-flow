@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import MyJobCard from './MyJobCard';
+import Swal from 'sweetalert2';
 
 const PostedJobs = () => {
     const { user } = useContext(AuthContext);
@@ -13,6 +14,43 @@ const PostedJobs = () => {
             .then(data => setJobs(data))
     }, [url]);
     console.log(jobs);
+
+    const handleDelete = id => {
+        console.log(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                fetch(`http://localhost:5000/jobs/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your Product has been deleted.',
+                                'success'
+                            )
+                            const remaining = jobs.filter(job => job._id !== id);
+                            setJobs(remaining);
+                        }
+                    })
+
+            }
+        })
+    }
+
+
     return (
         <div className='mt-24'>
             <h1 className='text-dark text-5xl text-center'>Jobs You Posted</h1>
@@ -21,6 +59,7 @@ const PostedJobs = () => {
                 jobs.map(job => <MyJobCard
                 key={job._id}
                 job={job}
+                handleDelete={handleDelete}
                 ></MyJobCard>)
             }
         </div>
