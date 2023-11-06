@@ -36,7 +36,7 @@ const BidForm = ({job}) => {
                 if(data.insertedId){
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Job Added Successfully',
+                        text: 'Bid Placed Successfully',
                         icon: 'success',
                         confirmButtonText: 'OK',
                         
@@ -44,7 +44,7 @@ const BidForm = ({job}) => {
                    
                       
                     // form.reset()
-                    
+                    navigate('/myBids')
                 }
              
             })

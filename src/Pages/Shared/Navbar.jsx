@@ -32,7 +32,7 @@ const Navbar = () => {
               textDecoration: isActive ? 'underline' : 'none',
               fontWeight : isActive ? 'bold' : 'normal',
               background: isActive ? 'transparent' : 'transparent'
-              })} to='/myCart'>My Bids</NavLink></li>
+              })} to='/myBids'>My Bids</NavLink></li>
       <li><NavLink style={({ isActive }) => ({
               color: isActive ? "#4F4A45" : 'black',
               textDecoration: isActive ? 'underline' : 'none',
