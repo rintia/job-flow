@@ -38,7 +38,7 @@ const Navbar = () => {
               textDecoration: isActive ? 'underline' : 'none',
               fontWeight : isActive ? 'bold' : 'normal',
               background: isActive ? 'transparent' : 'transparent'
-              })} to='/myCart'>Bid Requests</NavLink></li>
+              })} to='/bidRequests'>Bid Requests</NavLink></li>
       </>
       const handleLogOut =() => {
         logOut()

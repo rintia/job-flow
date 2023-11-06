@@ -9,6 +9,7 @@ import PostedJobs from "../Pages/PostedJobs/PostedJobs";
 import UpdateJob from "../Pages/UpdateJob/UpdateJob";
 import JobDetails from "../Pages/JobDetails/JobDetails";
 import MyBids from "../Pages/MyBids/MyBids";
+import BidRequests from "../Pages/MyBids/BidRequests/BidRequests";
 
 
 const router = createBrowserRouter([
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
         {
           path: '/myBids',
           element: <MyBids></MyBids>
+        },
+        {
+          path: '/bidRequests',
+          element: <BidRequests></BidRequests>
         }
       ]
     },
