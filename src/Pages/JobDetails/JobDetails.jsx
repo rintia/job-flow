@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import DetailsCard from './DetailsCard';
+import BidForm from './BidForm';
 
 const JobDetails = () => {
     const job = useLoaderData();
@@ -10,6 +11,7 @@ const JobDetails = () => {
     return (
         <div>
            <DetailsCard job={job} ></DetailsCard>
+           <BidForm job={job}></BidForm>
         </div>
     );
 };
