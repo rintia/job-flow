@@ -6,6 +6,7 @@ import RequesRow from './RequesRow';
 const BidRequests = () => {
     const {user} = useContext(AuthContext);
     const[bidReqs, setBidReqs] = useState([]);
+   
 
     const url = `http://localhost:5000/bids?ownerEmail=${user?.email}`
 
@@ -16,6 +17,52 @@ const BidRequests = () => {
     },[url])
 
     console.log(bidReqs);
+
+    const handleAccept = id => {
+        fetch(`http://localhost:5000/bids/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ status: 'accept' })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    // update state
+                    const remaining = bidReqs.filter(req => req._id !== id);
+                    const updated = bidReqs.find(req => req._id === id);
+                    updated.status = 'accept'
+                    const newBidReqs = [updated, ...remaining];
+                    setBidReqs(newBidReqs);
+                }
+            })
+           
+    }
+
+    const handleReject = id => {
+        fetch(`http://localhost:5000/bids/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ status: 'reject' })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    // update state
+                    const remaining = bidReqs.filter(req => req._id !== id);
+                    const updated = bidReqs.find(req => req._id === id);
+                    updated.status = 'reject'
+                    const newBidReqs = [updated, ...remaining];
+                    setBidReqs(newBidReqs);
+                }
+            })
+
+    }
 
     return (
         <div className='mt-12'> 
@@ -37,6 +84,8 @@ const BidRequests = () => {
       {/* row 1 */}
       {
         bidReqs.map(req => <RequesRow
+        handleAccept={handleAccept}
+        handleReject= {handleReject}
         key={req._id}
         req={req}
         ></RequesRow>)
