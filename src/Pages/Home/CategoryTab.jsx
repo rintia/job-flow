@@ -17,7 +17,7 @@ const CategoryTab = () => {
     const jobThree =  jobs.filter(job => job.category === 'Digital Marketing');
     console.log(jobOne);
     return (
-        <div>
+        <div className='px-4 lg:px-0'>
             <Tabs >
                 <TabList className={'flex justify-center gap-12 '}>
                     <Tab>Web Development</Tab>

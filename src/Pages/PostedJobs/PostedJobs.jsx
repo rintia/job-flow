@@ -4,6 +4,8 @@ import MyJobCard from './MyJobCard';
 import Swal from 'sweetalert2';
 
 const PostedJobs = () => {
+    let newPageTitle = 'JobFlow | My Posted Jobs';
+    document.querySelector('title').textContent = newPageTitle;
     const { user } = useContext(AuthContext);
     const [jobs, setJobs] = useState([]);
 
@@ -52,9 +54,9 @@ const PostedJobs = () => {
 
 
     return (
-        <div className='mt-24'>
+        <div className='mt-24 px-4 lg:px-0'>
             <h1 className='text-dark text-5xl text-center'>Jobs You Posted</h1>
-             <div className='mt-12 grid grid-cols-1 md:grid-cols-3  gap-6'>
+             <div className='mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6'>
             {
                 jobs.map(job => <MyJobCard
                 key={job._id}

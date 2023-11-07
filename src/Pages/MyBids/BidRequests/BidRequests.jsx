@@ -6,6 +6,9 @@ import RequesRow from './RequesRow';
 const BidRequests = () => {
     const {user} = useContext(AuthContext);
     const[bidReqs, setBidReqs] = useState([]);
+
+    let newPageTitle = 'JobFlow | Bid Requests';
+    document.querySelector('title').textContent = newPageTitle;
    
 
     const url = `http://localhost:5000/bids?ownerEmail=${user?.email}`

@@ -8,6 +8,8 @@ import { FcGoogle } from 'react-icons/fc';
 
 
 const Register = () => {
+  let newPageTitle = 'JobFlow | Register';
+  document.querySelector('title').textContent = newPageTitle;
     const {createUser, signInWithGoogle} = useContext(AuthContext);
     const navigate = useNavigate();
    
@@ -96,11 +98,11 @@ const Register = () => {
           <input type="password" name="password" placeholder="password" className="input input-bordered" required />
         </div>
         <div className="form-control mt-6">
-          <button className="btn border-none bg-dark text-while  bg-[#ED7D31] hover:bg-[#6C5F5B] btn-primary">Register</button>
+          <button className="btn border-none text-white  bg-[#ED7D31] hover:bg-[#6C5F5B] btn-primary">Register</button>
           <p className="text-center mt-4">Or</p>
          <div className="flex justify-center">
          <button
-           onClick={handleGoogleSignIn} className="btn btn-outline">
+           onClick={handleGoogleSignIn} className="btn btn-outline w-full">
             <FcGoogle className="text-3xl"></FcGoogle>
             Login with Google</button>
          </div>

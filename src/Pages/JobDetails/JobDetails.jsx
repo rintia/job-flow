@@ -5,9 +5,11 @@ import DetailsCard from './DetailsCard';
 import BidForm from './BidForm';
 
 const JobDetails = () => {
+    let newPageTitle = 'JobFlow | Job Details';
+    document.querySelector('title').textContent = newPageTitle;
+
     const job = useLoaderData();
-    const {user} = useContext(AuthContext)
-    const{_id, title, email, category, deadline, maxPrice, minPrice, descrpition} =job
+    
     return (
         <div>
            <DetailsCard job={job} ></DetailsCard>

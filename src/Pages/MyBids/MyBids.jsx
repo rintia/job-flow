@@ -4,6 +4,9 @@ import { AuthContext } from '../Providers/AuthProvider';
 import MyBidsRow from './MyBidsRow';
 
 const MyBids = ({}) => {
+
+  let newPageTitle = 'JobFlow | My Bids';
+    document.querySelector('title').textContent = newPageTitle;
   
     const {user} = useContext(AuthContext);
 
@@ -19,6 +22,16 @@ const MyBids = ({}) => {
         .then(data => setBids(data))
     },[url])
 
+    const handleSort =() => {
+        fetch('http://localhost:5000/bids')
+        .then(res => res.json())
+        .then(data => {
+          const sorted = data.filter(data => data.userEmail === user.email)
+          setBids(sorted)
+        })
+
+    }
+
     
 
     const handleComplete = id => {
@@ -27,7 +40,7 @@ const MyBids = ({}) => {
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify({ progress: 'complete' })
+        body: JSON.stringify({ status: 'complete' })
     })
         .then(res => res.json())
         .then(data => {
@@ -36,7 +49,7 @@ const MyBids = ({}) => {
                 // update state
                 const remaining = bids.filter(bid => bid._id !== id);
                 const updated = bids.find(bid => bid._id === id);
-                updated.progress = 'complete';
+                updated.status = 'complete';
                 const newBids = [updated, ...remaining];
                 setBids(newBids);
             }
@@ -49,6 +62,9 @@ const MyBids = ({}) => {
     return (
   <div className='mt-12'> 
     <h1 className='text-3xl font-semibold text-dark text-center'>My Bids</h1>
+    <div className='flex justify-end mt-4'>
+    <button onClick={handleSort} className='btn btn-outline btn-accent'>Sort By Status</button>
+    </div>
           <div className="overflow-x-auto mt-8">
   <table className="table">
     {/* head */}

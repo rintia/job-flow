@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const AddJob = () => {
+    let newPageTitle = 'JobFlow | Add Job';
+    document.querySelector('title').textContent = newPageTitle;
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -61,7 +63,7 @@ const AddJob = () => {
 
 
     return (
-        <div className=" p-24">
+        <div className="p-4 md:p-12 lg:p-24">
             <h2 className="text-3xl text-dark mb-12 font-extrabold text-center">Add A New Job</h2>
             <form onSubmit={handleAddJob}>
 

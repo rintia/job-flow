@@ -7,6 +7,8 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
+  let newPageTitle = 'JobFlow | Login';
+  document.querySelector('title').textContent = newPageTitle;
     const {signInUser, signInWithGoogle} = useContext(AuthContext);
     const location = useLocation();
     console.log('location in the login page', location)
