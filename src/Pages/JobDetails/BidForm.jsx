@@ -22,7 +22,7 @@ const BidForm = ({job}) => {
         const newBid = {userEmail, ownerEmail, title, category, deadline, price};
         console.log(newBid);
 
-        fetch('http://localhost:5000/bids', {
+        fetch('https://job-flow-server.vercel.app/bids', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -12,7 +12,7 @@ const BidRequests = () => {
     document.querySelector('title').textContent = newPageTitle;
    
 
-    const url = `http://localhost:5000/bids?ownerEmail=${user?.email}`
+    const url = `https://job-flow-server.vercel.app/bids?ownerEmail=${user?.email}`
 
     useEffect(() => {
         fetch(url)
@@ -27,7 +27,7 @@ const BidRequests = () => {
     console.log(bidReqs);
 
     const handleAccept = id => {
-        fetch(`http://localhost:5000/bids/${id}`, {
+        fetch(`https://job-flow-server.vercel.app/bids/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -50,7 +50,7 @@ const BidRequests = () => {
     }
 
     const handleReject = id => {
-        fetch(`http://localhost:5000/bids/${id}`, {
+        fetch(`https://job-flow-server.vercel.app/bids/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

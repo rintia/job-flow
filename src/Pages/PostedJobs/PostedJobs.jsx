@@ -10,7 +10,7 @@ const PostedJobs = () => {
     const [loading, setLoading] = useState(true)
     const [jobs, setJobs] = useState([]);
 
-    const url = `http://localhost:5000/jobs?email=${user?.email}`;
+    const url = `https://job-flow-server.vercel.app/jobs?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -35,7 +35,7 @@ const PostedJobs = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:5000/jobs/${id}`, {
+                fetch(`https://job-flow-server.vercel.app/jobs/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

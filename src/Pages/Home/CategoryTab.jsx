@@ -8,7 +8,7 @@ const CategoryTab = () => {
     const [loading, setLoading] = useState(true);
     const [jobs, setJobs] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/jobs')
+        fetch('https://job-flow-server.vercel.app/jobs')
         .then(res => res.json())
         .then(data =>{
             setJobs(data)

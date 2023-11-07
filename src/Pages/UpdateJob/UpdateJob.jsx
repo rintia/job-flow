@@ -23,7 +23,7 @@ const UpdateJob = () => {
 
         const updatedJob = {email, title, category, maxPrice, minPrice, deadline, descrpition};
 
-        fetch(`http://localhost:5000/jobs/${_id}`, {
+        fetch(`https://job-flow-server.vercel.app/jobs/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

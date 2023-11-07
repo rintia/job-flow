@@ -42,12 +42,12 @@ const router = createBrowserRouter([
         {
           path: '/updateJob/:id',
           element: <UpdateJob></UpdateJob>,
-          loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`)
+          loader: ({params}) => fetch(`https://job-flow-server.vercel.app/jobs/${params.id}`)
         },
         {
           path: '/jobDetails/:id',
           element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`)
+          loader: ({params}) => fetch(`https://job-flow-server.vercel.app/jobs/${params.id}`)
         },
         {
           path: '/myBids',

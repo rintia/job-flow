@@ -26,7 +26,7 @@ const AddJob = () => {
 
         console.log(newJob);
 
-        const url = 'http://localhost:5000/jobs'
+        const url = 'https://job-flow-server.vercel.app/jobs'
 
         
             fetch(url, {

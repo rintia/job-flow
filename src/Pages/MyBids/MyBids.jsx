@@ -14,7 +14,7 @@ const MyBids = ({}) => {
     const[bids, setBids] = useState([]);
 
 
-    const url = `http://localhost:5000/bids?userEmail=${user?.email}`
+    const url = `https://job-flow-server.vercel.app/bids?userEmail=${user?.email}`
 
     useEffect(() => {
         fetch(url)
@@ -26,7 +26,7 @@ const MyBids = ({}) => {
     },[url])
 
     const handleSort =() => {
-        fetch('http://localhost:5000/bids')
+        fetch('https://job-flow-server.vercel.app/bids')
         .then(res => res.json())
         .then(data => {
           const sorted = data.filter(data => data.userEmail === user.email)
@@ -38,7 +38,7 @@ const MyBids = ({}) => {
     
 
     const handleComplete = id => {
-      fetch(`http://localhost:5000/bids/${id}`, {
+      fetch(`https://job-flow-server.vercel.app/bids/${id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'
