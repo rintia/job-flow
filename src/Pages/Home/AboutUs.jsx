@@ -1,8 +1,10 @@
 import React from 'react';
 
+
 const AboutUs = () => {
     return (
-        <div className='px-4 lg:px-0 mt-32 text-center'>
+        <div
+        className='px-4 lg:px-0 mt-32 text-center'>
             <h1 className='font-bold text-5xl  text-dark'>About Us</h1>
             <p className='mt-5'>
                 Welcome to JobFlow, where talent meets opportunity.
