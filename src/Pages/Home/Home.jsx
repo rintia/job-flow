@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './Banner';
 import CategoryTab from './CategoryTab';
+import GetStarted from './GetStarted';
 
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <CategoryTab></CategoryTab>
+            <GetStarted></GetStarted>
         </div>
     );
 };

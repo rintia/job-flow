@@ -4,6 +4,7 @@ import RequesRow from './RequesRow';
 
 
 const BidRequests = () => {
+  const[loading, setLoading] = useState(true)
     const {user} = useContext(AuthContext);
     const[bidReqs, setBidReqs] = useState([]);
 
@@ -16,7 +17,11 @@ const BidRequests = () => {
     useEffect(() => {
         fetch(url)
         .then(res => res.json())
-        .then(data => setBidReqs(data))
+        .then(data => {
+          
+          setBidReqs(data)
+        setLoading(false)
+        })
     },[url])
 
     console.log(bidReqs);
@@ -83,9 +88,14 @@ const BidRequests = () => {
         <th></th>
       </tr>
     </thead>
-    <tbody>
-      {/* row 1 */}
-      {
+    
+   { loading === true ?
+                         <div className="flex justify-center">
+                            <img src="https://i.ibb.co/9NVN61Z/loading.gif"  alt="" />
+                             </div>
+                             :
+        <tbody>
+           {
         bidReqs.map(req => <RequesRow
         handleAccept={handleAccept}
         handleReject= {handleReject}
@@ -93,7 +103,10 @@ const BidRequests = () => {
         req={req}
         ></RequesRow>)
       }
-    </tbody>
+        </tbody>
+     
+    }
+  
   </table>
 </div>
   </div>

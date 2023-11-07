@@ -10,7 +10,7 @@ const MyBids = ({}) => {
   
     const {user} = useContext(AuthContext);
 
-    
+    const [loading, setLoading] = useState(true)
     const[bids, setBids] = useState([]);
 
 
@@ -19,7 +19,10 @@ const MyBids = ({}) => {
     useEffect(() => {
         fetch(url)
         .then(res => res.json())
-        .then(data => setBids(data))
+        .then(data => {
+        setBids(data)
+          setLoading(false)
+      })
     },[url])
 
     const handleSort =() => {
@@ -77,16 +80,22 @@ const MyBids = ({}) => {
         <th></th>
       </tr>
     </thead>
-    <tbody>
-      {/* row 1 */}
-      {
-        bids.map(bid => <MyBidsRow
-        handleComplete={handleComplete}
-        key={bid._id}
-        bid={bid}
-        ></MyBidsRow>)
+      {  loading === true ?
+                         <div className="flex justify-center">
+                            <img src="https://i.ibb.co/9NVN61Z/loading.gif"  alt="" />
+                             </div>
+        :
+        <tbody>
+      
+        {
+          bids.map(bid => <MyBidsRow
+          handleComplete={handleComplete}
+          key={bid._id}
+          bid={bid}
+          ></MyBidsRow>)
+        }
+      </tbody>
       }
-    </tbody>
   </table>
 </div>
   </div>

@@ -7,13 +7,17 @@ const PostedJobs = () => {
     let newPageTitle = 'JobFlow | My Posted Jobs';
     document.querySelector('title').textContent = newPageTitle;
     const { user } = useContext(AuthContext);
+    const [loading, setLoading] = useState(true)
     const [jobs, setJobs] = useState([]);
 
     const url = `http://localhost:5000/jobs?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
-            .then(data => setJobs(data))
+            .then(data => {
+                setJobs(data)
+                setLoading(false)
+            })
     }, [url]);
     console.log(jobs);
 
@@ -56,7 +60,12 @@ const PostedJobs = () => {
     return (
         <div className='mt-24 px-4 lg:px-0'>
             <h1 className='text-dark text-5xl text-center'>Jobs You Posted</h1>
-             <div className='mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6'>
+             {loading === true ?
+                         <div className="flex justify-center">
+                            <img src="https://i.ibb.co/9NVN61Z/loading.gif"  alt="" />
+                             </div>
+                :
+                <div className='mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6'>
             {
                 jobs.map(job => <MyJobCard
                 key={job._id}
@@ -65,6 +74,7 @@ const PostedJobs = () => {
                 ></MyJobCard>)
             }
         </div>
+             }
         </div>
        
     );
