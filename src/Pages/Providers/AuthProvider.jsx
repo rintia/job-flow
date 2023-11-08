@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import PropTypes from 'prop-types'; 
 import auth from "../../../firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -33,7 +34,14 @@ const AuthProvider = ({children}) => {
     useEffect(() => {
        const unSubscribe = onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser);
-            setLoading(false)
+            setLoading(false);
+            if(currentUser){
+                const loggedUser = {email: currentUser.email}
+                axios.post( 'https://job-flow-server.vercel.app/jwt',loggedUser, {withCredentials : true})
+                .then(res => {
+                    console.log('token response', res.data);
+                })
+            }
         })
         return () => {
             unSubscribe();
