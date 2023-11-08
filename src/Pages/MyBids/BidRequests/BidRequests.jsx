@@ -15,7 +15,7 @@ const BidRequests = () => {
     const url = `https://job-flow-server.vercel.app/bids?ownerEmail=${user?.email}`
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
           

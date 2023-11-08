@@ -17,7 +17,7 @@ const MyBids = ({}) => {
     const url = `https://job-flow-server.vercel.app/bids?userEmail=${user?.email}`
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {credentials: 'include'})
         .then(res => res.json())
         .then(data => {
         setBids(data)
