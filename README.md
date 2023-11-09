@@ -1,4 +1,4 @@
-Live link : https://job-flow-33fe0.web.app/
+Live link : https://gleeful-semolina-b8a7d1.netlify.app/
 
 The features of the websites are
 1. A user can add a job by filling the form in add job page
